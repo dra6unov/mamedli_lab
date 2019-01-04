@@ -1,0 +1,31 @@
+CREATE TABLE [dbo].[USERS] (
+    [ID]        INT           IDENTITY (1, 1) NOT NULL,
+    [FIRSTNAME] NVARCHAR (30) NOT NULL,
+    [LASTNAME]  NVARCHAR (30) NOT NULL,
+    [EMAIL]     NVARCHAR (40) NOT NULL,
+    [PASS]      NVARCHAR (20) NOT NULL,
+    [GRUP]      NVARCHAR (15) DEFAULT ('USER') NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+CREATE TABLE [dbo].[PRODUCTS] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [PRODUCTNAME] NVARCHAR (20)   NOT NULL,
+    [MANUFACT]    NVARCHAR (30)   NULL,
+    [PRICE]       INT             NOT NULL,
+    [DESCR]       NVARCHAR (200)  NULL,
+    [IMG]         VARBINARY (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+CREATE TABLE [dbo].[STORE] (
+    [ID]       INT            IDENTITY (1, 1) NOT NULL,
+    [LOGIN_ID] INT            NOT NULL,
+    [PROD_ID]  INT            NOT NULL,
+    [ADRESS]   NVARCHAR (100) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    FOREIGN KEY ([LOGIN_ID]) REFERENCES [dbo].[USERS] ([ID]),
+    FOREIGN KEY ([PROD_ID]) REFERENCES [dbo].[PRODUCTS] ([ID])
+);

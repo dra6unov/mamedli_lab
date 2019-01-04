@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/component/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/component/js/reg.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="@Url.Action("Index","Index")">Главная страница</a>
+        <a class="navbar-brand" href="@Url.Action("Add","AddProduct")">Добавить новый товар</a>
+
+        <form class="form-inline other-side">
+            <input type="search" class="form-control mr-sm-2" />
+            <button class="btn btn-outline-success my-sm-0 my-2" type="submit">Поиск!</button>
+        </form>
+        <a href="@Url.Action("Index", "Store")" class="corz-pos"><img src="~/component/img/korz.jpg" height="30" width="50"/></a>
+    </nav>
+    
+    @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer></footer>
+    </div>
+    
+</body>
+</html>

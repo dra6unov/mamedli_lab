@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище WebStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PRODUCTS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCTNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MANUFACT" Type="nvarchar" MaxLength="30" />
+    <Property Name="PRICE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DESCR" Type="nvarchar" MaxLength="200" />
+    <Property Name="CATEGORY" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STORE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOGIN_ID" Type="int" Nullable="false" />
+    <Property Name="PROD_ID" Type="int" Nullable="false" />
+    <Property Name="ADRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LASTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="PASS" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GRUP" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__STORE__LOGIN_ID__4222D4EF">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STORE">
+        <PropertyRef Name="LOGIN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__STORE__PROD_ID__4316F928">
+    <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+    <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STORE">
+        <PropertyRef Name="PROD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище WebStoreModelContainer">
+    <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__STORE__LOGIN_ID__4222D4EF" Association="Self.FK__STORE__LOGIN_ID__4222D4EF">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="STORE" EntitySet="STORE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__STORE__PROD_ID__4316F928" Association="Self.FK__STORE__PROD_ID__4316F928">
+      <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+      <End Role="STORE" EntitySet="STORE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

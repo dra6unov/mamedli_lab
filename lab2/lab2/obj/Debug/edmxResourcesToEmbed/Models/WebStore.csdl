@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PRODUCTS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANUFACT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PRICE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DESCR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__PROD_ID__4316F928" FromRole="PRODUCTS" ToRole="STORE" />
+  </EntityType>
+  <EntityType Name="STORE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOGIN_ID" Type="Int32" Nullable="false" />
+    <Property Name="PROD_ID" Type="Int32" Nullable="false" />
+    <Property Name="ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__STORE__PROD_ID__4316F928" FromRole="STORE" ToRole="PRODUCTS" />
+    <NavigationProperty Name="USERS" Relationship="Self.FK__STORE__LOGIN_ID__4222D4EF" FromRole="STORE" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PASS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GRUP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__LOGIN_ID__4222D4EF" FromRole="USERS" ToRole="STORE" />
+  </EntityType>
+  <Association Name="FK__STORE__PROD_ID__4316F928">
+    <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+    <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STORE">
+        <PropertyRef Name="PROD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__STORE__LOGIN_ID__4222D4EF">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STORE">
+        <PropertyRef Name="LOGIN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" />
+    <EntitySet Name="STORE" EntityType="Self.STORE" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" />
+    <AssociationSet Name="FK__STORE__PROD_ID__4316F928" Association="Self.FK__STORE__PROD_ID__4316F928">
+      <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+      <End Role="STORE" EntitySet="STORE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__STORE__LOGIN_ID__4222D4EF" Association="Self.FK__STORE__LOGIN_ID__4222D4EF">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="STORE" EntitySet="STORE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

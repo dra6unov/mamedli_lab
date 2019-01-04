@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Интернет магазин";
+}
+
+<h2>Главная страница</h2>
+
+<a href="@Url.Action("Register","Register")"><input type="button" class="btn btn-primary" value="Регистрация"></a>
+<div class="container">
+    @*<table>
+        <tr>
+            <td>
+                <img src="~/component/img/smart.jpg" width="200" height="250"/>
+            </td>
+            <td>
+                <img src="~/component/img/notebook.jpg" width="200" height="250"/>
+            </td>
+            <td>
+                <img src="~/component/img/watch.jpg" width="200" height="250"/>
+            </td>
+        </tr>
+    </table>*@
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="@Url.Action("Smartphone","Products")">
+                <img src="~/component/img/smart.jpg" width="200" height="250" id="smart" />
+
+                @*<img src="~/component/img/smart.jpg" width="200" height="250" id="smart" />*@
+                <h2>Смартфоны</h2>
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="@Url.Action("Notebook","Products")">
+                <img src="~/component/img/notebook.jpg" width="230" height="250" id="notebook" />
+                <h2 class="notebook-margin">Ноутбуки</h2>
+                </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="@Url.Action("Smartwatch","Products")">
+                <img src="~/component/img/watch.jpg" width="200" height="250" id="watch" />
+                <h2>Умные часы</h2>
+                </a>
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+    $('img').click(function () {
+        $.ajax({
+            method: "GET",
+            url: "Products/Index",
+            data: {
+                id: this.id
+            }
+        });
+    });
+</script>*@
