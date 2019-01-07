@@ -3,32 +3,34 @@
     ViewBag.Title = "Ноутбуки";
 }
 
-<h2>Notebook</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Наименование</th>
-            <th scope="col">Производитель</th>
-            <th scope="col">Краткое описание</th>
-            <th scope="col">Стоимость</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        @foreach (var item in Model)
-        {
+<div class="container body-content">
+    <h2>Notebook</h2>
+    <table class="table">
+        <thead>
             <tr>
-                <th scope="row">@item.PRODUCTNAME</th>
-                <td>@item.MANUFACT</td>
-                <td>@item.DESCR</td>
-                <td>@item.PRICE</td>
-                <td><input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger"/></td>
-                <td><input type="button" id="plus" class="but plus" value="+"/>@*<label id="count" class="count">1</label>*@<input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" /></td>
+                <th scope="col">Наименование</th>
+                <th scope="col">Производитель</th>
+                <th scope="col">Краткое описание</th>
+                <th scope="col">Стоимость</th>
             </tr>
-                }
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row" id="name">@item.PRODUCTNAME</th>
+                    <td>@item.MANUFACT</td>
+                    <td>@item.DESCR</td>
+                    <td id="price">@item.PRICE</td>
+                    <td><input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger" /></td>
+                    <td><input type="button" id="plus" class="but plus" value="+" />@*<label id="count" class="count">1</label>*@<input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" /></td>
+                </tr>
+            }
         </tbody>
-</table>
+    </table>
+</div>
 
 <script type="text/javascript">
     $(".but").click(function () {
@@ -53,8 +55,13 @@
     $("#addStore").click(function () {
         $.ajax({
             method: "POST",
-            url: "Store/addToStore",
-            data: {}
+            url: "/Store/addToStore",
+            data: {
+                name: $("#name").text(),
+                price: $("#price").text(),
+                kol: $("#count").val(),
+                mail: document.cookie.replace("mail=", "")
+            }
         });
     });
 </script>

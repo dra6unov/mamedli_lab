@@ -20,16 +20,86 @@
             <input type="search" class="form-control mr-sm-2" />
             <button class="btn btn-outline-success my-sm-0 my-2" type="submit">Поиск!</button>
         </form>
-        <a href="@Url.Action("Index", "Store")" class="corz-pos"><img src="~/component/img/korz.jpg" height="30" width="50"/></a>
+        <a href="@Url.Action("Index", "Store")" class="corz-pos"><img src="~/component/img/korz.jpg" height="30" width="50" /></a>
     </nav>
-    
+
     @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <h2>Главная страница</h2>
+            </div>
+            <div class="col-md-2">
+                <form id="authForm">
+                    <div class="form-group">
+                        <label for="email">Введите электронную почту</label>
+                        <input type="email" id="emailAu" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Введите пароль</label>
+                        <input type="password" id="passAu" class="form-control" />
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-primary" value="Войти" id="auBut">
+                        <a href="@Url.Action("Register","Register")"><input type="button" class="btn btn-primary reg-btn" value="Регистрация"></a>
+                    </div>
+                </form>
+                <input type="button" class="btn btn-primary" value="Выйти" id="logoutBut">
+            </div>
+        </div>
+    </div>
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer></footer>
     </div>
-    
+    @*@RenderBody()*@
+
+    <script type="text/javascript">
+        var _mail = document.cookie.replace("mail=","");
+
+        window.onload = function () {
+            if (_mail == "") {
+                $("#authForm").show();
+                $("#logoutBut").hide();
+
+                @*document.getElementById('authForm').innerHTML = '<div class="form-group"><label for="email">Введите электронную почту</label> <input type="email" id="emailAu" class="form-control" /></div><div class="form-group"><label for="pass">Введите пароль</label><input type="password" id="passAu" class="form-control" /></div><div><input type="button" class="btn btn-primary" value="Войти" id="auBut"><a href="@Url.Action("Register","Register")"><input type="button" class="btn btn-primary reg-btn" value="Регистрация"></a></div>'*@
+                //alert(_mail);
+            }
+            else {
+                //document.getElementById('authForm').innerHTML = '<input type="button" class="btn btn-primary" value="Выйти" id="logoutBut">'
+
+                $("#authForm").hide();
+                $("#logoutBut").show();
+                
+                //alert(_mail);
+            }
+            //alert(_mail);
+        };
+
+        $("#logoutBut").click(function () {
+            //_mail = "";
+            //$.removeCookie("mail");
+            //alert(_mail);
+            $.ajax({
+                method: "POST",
+                url: "/Index/logout"
+            });
+        });
+
+        $("#auBut").click(function () {
+            $.ajax({
+                method: "POST",
+                url: "/Index/auth",
+                data: {
+                    mail: $("#emailAu").val(),
+                    pass: $("#passAu").val()
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

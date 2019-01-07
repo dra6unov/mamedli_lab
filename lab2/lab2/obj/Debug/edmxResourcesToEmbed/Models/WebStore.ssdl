@@ -18,7 +18,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LOGIN_ID" Type="int" Nullable="false" />
     <Property Name="PROD_ID" Type="int" Nullable="false" />
-    <Property Name="ADRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="KOL" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="USERS">
     <Key>
@@ -29,9 +29,10 @@
     <Property Name="LASTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="EMAIL" Type="nvarchar" MaxLength="40" Nullable="false" />
     <Property Name="PASS" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="GRUP" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="GRUP" Type="nvarchar" MaxLength="15" />
+    <Property Name="ADRESS" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__STORE__LOGIN_ID__4222D4EF">
+  <Association Name="FK__STORE__LOGIN_ID__4CA06362">
     <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
     <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -43,7 +44,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__STORE__PROD_ID__4316F928">
+  <Association Name="FK__STORE__PROD_ID__4D94879B">
     <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
     <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -59,11 +60,11 @@
     <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__STORE__LOGIN_ID__4222D4EF" Association="Self.FK__STORE__LOGIN_ID__4222D4EF">
+    <AssociationSet Name="FK__STORE__LOGIN_ID__4CA06362" Association="Self.FK__STORE__LOGIN_ID__4CA06362">
       <End Role="USERS" EntitySet="USERS" />
       <End Role="STORE" EntitySet="STORE" />
     </AssociationSet>
-    <AssociationSet Name="FK__STORE__PROD_ID__4316F928" Association="Self.FK__STORE__PROD_ID__4316F928">
+    <AssociationSet Name="FK__STORE__PROD_ID__4D94879B" Association="Self.FK__STORE__PROD_ID__4D94879B">
       <End Role="PRODUCTS" EntitySet="PRODUCTS" />
       <End Role="STORE" EntitySet="STORE" />
     </AssociationSet>

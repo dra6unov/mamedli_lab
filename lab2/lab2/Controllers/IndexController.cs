@@ -13,5 +13,22 @@ namespace lab2.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public void auth(string mail, string pass)
+        {
+            //Session["mail"] = mail;
+            //string checkau = HttpContext.User.Identity.Name;
+            HttpContext.Response.Cookies["mail"].Value = mail;
+            var _mail = HttpContext.Response.Cookies["mail"].Value;
+            
+            //return 
+        }
+
+        public void logout()
+        {
+            //HttpContext.Response.Cookies.Clear();
+            HttpContext.Response.Cookies["mail"].Value = "";
+        }
     }
 }

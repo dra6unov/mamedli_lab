@@ -23,7 +23,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LOGIN_ID" Type="int" Nullable="false" />
           <Property Name="PROD_ID" Type="int" Nullable="false" />
-          <Property Name="ADRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KOL" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -34,9 +34,10 @@
           <Property Name="LASTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="PASS" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="GRUP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="GRUP" Type="nvarchar" MaxLength="15" />
+          <Property Name="ADRESS" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__STORE__LOGIN_ID__4222D4EF">
+        <Association Name="FK__STORE__LOGIN_ID__4CA06362">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -48,7 +49,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STORE__PROD_ID__4316F928">
+        <Association Name="FK__STORE__PROD_ID__4D94879B">
           <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -64,11 +65,11 @@
           <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__STORE__LOGIN_ID__4222D4EF" Association="Self.FK__STORE__LOGIN_ID__4222D4EF">
+          <AssociationSet Name="FK__STORE__LOGIN_ID__4CA06362" Association="Self.FK__STORE__LOGIN_ID__4CA06362">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="STORE" EntitySet="STORE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STORE__PROD_ID__4316F928" Association="Self.FK__STORE__PROD_ID__4316F928">
+          <AssociationSet Name="FK__STORE__PROD_ID__4D94879B" Association="Self.FK__STORE__PROD_ID__4D94879B">
             <End Role="PRODUCTS" EntitySet="PRODUCTS" />
             <End Role="STORE" EntitySet="STORE" />
           </AssociationSet>
@@ -88,7 +89,7 @@
           <Property Name="PRICE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DESCR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CATEGORY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__PROD_ID__4316F928" FromRole="PRODUCTS" ToRole="STORE" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__PROD_ID__4D94879B" FromRole="PRODUCTS" ToRole="STORE" />
         </EntityType>
         <EntityType Name="STORE">
           <Key>
@@ -97,9 +98,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LOGIN_ID" Type="Int32" Nullable="false" />
           <Property Name="PROD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__STORE__PROD_ID__4316F928" FromRole="STORE" ToRole="PRODUCTS" />
-          <NavigationProperty Name="USERS" Relationship="Self.FK__STORE__LOGIN_ID__4222D4EF" FromRole="STORE" ToRole="USERS" />
+          <Property Name="KOL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__STORE__PROD_ID__4D94879B" FromRole="STORE" ToRole="PRODUCTS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__STORE__LOGIN_ID__4CA06362" FromRole="STORE" ToRole="USERS" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -110,10 +111,11 @@
           <Property Name="LASTNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PASS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GRUP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__LOGIN_ID__4222D4EF" FromRole="USERS" ToRole="STORE" />
+          <Property Name="GRUP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK__STORE__LOGIN_ID__4CA06362" FromRole="USERS" ToRole="STORE" />
         </EntityType>
-        <Association Name="FK__STORE__PROD_ID__4316F928">
+        <Association Name="FK__STORE__PROD_ID__4D94879B">
           <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STORE__LOGIN_ID__4222D4EF">
+        <Association Name="FK__STORE__LOGIN_ID__4CA06362">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,11 +143,11 @@
           <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" />
           <EntitySet Name="STORE" EntityType="Self.STORE" />
           <EntitySet Name="USERS" EntityType="Self.USERS" />
-          <AssociationSet Name="FK__STORE__PROD_ID__4316F928" Association="Self.FK__STORE__PROD_ID__4316F928">
+          <AssociationSet Name="FK__STORE__PROD_ID__4D94879B" Association="Self.FK__STORE__PROD_ID__4D94879B">
             <End Role="PRODUCTS" EntitySet="PRODUCTS" />
             <End Role="STORE" EntitySet="STORE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STORE__LOGIN_ID__4222D4EF" Association="Self.FK__STORE__LOGIN_ID__4222D4EF">
+          <AssociationSet Name="FK__STORE__LOGIN_ID__4CA06362" Association="Self.FK__STORE__LOGIN_ID__4CA06362">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="STORE" EntitySet="STORE" />
           </AssociationSet>
@@ -174,7 +176,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="LOGIN_ID" ColumnName="LOGIN_ID" />
                 <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
-                <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
+                <ScalarProperty Name="KOL" ColumnName="KOL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -187,6 +189,7 @@
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="PASS" ColumnName="PASS" />
                 <ScalarProperty Name="GRUP" ColumnName="GRUP" />
+                <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

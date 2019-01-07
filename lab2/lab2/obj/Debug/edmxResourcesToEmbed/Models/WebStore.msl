@@ -19,7 +19,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="LOGIN_ID" ColumnName="LOGIN_ID" />
           <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
-          <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
+          <ScalarProperty Name="KOL" ColumnName="KOL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,6 +32,7 @@
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="PASS" ColumnName="PASS" />
           <ScalarProperty Name="GRUP" ColumnName="GRUP" />
+          <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

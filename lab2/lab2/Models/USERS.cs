@@ -26,6 +26,7 @@ namespace lab2.Models
         public string EMAIL { get; set; }
         public string PASS { get; set; }
         public string GRUP { get; set; }
+        public string ADRESS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STORE> STORE { get; set; }

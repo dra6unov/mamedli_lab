@@ -17,7 +17,7 @@ namespace lab2.Models
         public int ID { get; set; }
         public int LOGIN_ID { get; set; }
         public int PROD_ID { get; set; }
-        public string ADRESS { get; set; }
+        public int KOL { get; set; }
     
         public virtual PRODUCTS PRODUCTS { get; set; }
         public virtual USERS USERS { get; set; }
