@@ -4,34 +4,40 @@
 }
 
 <div class="container body-content">
-    <h2>Ноутбуки</h2>
     @if (Model.Count > 0)
     {
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Наименование</th>
-                <th scope="col">Производитель</th>
-                <th scope="col">Краткое описание</th>
-                <th scope="col">Стоимость</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
+        <h2>Ноутбуки</h2>
+        <div class="row">
             @foreach (var item in Model)
             {
-                <tr>
-                    <th scope="row" id="name">@item.PRODUCTNAME</th>
-                    <td>@item.MANUFACT</td>
-                    <td>@item.DESCR</td>
-                    <td id="price">@item.PRICE</td>
-                    <td><input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger" /></td>
-                    <td><input type="button" id="plus" class="but plus" value="+" /><input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" /></td>
-                </tr>
+                <div class="col-3 prod">
+
+                    <div>
+                        <label>Наименование: </label>
+                        <label id="name">@item.PRODUCTNAME</label>
+                    </div>
+                    <div>
+                        <label>Производитель: </label>
+                        <label id="proizv">@item.MANUFACT</label>
+                    </div>
+                    <div>
+                        <label>Краткое описание: </label>
+                        <label id="descr">@item.DESCR</label>
+                    </div>
+                    <div>
+                        <label>Стоимость: </label>
+                        <label id="price">@item.PRICE</label>
+                    </div>
+                    <div>
+                        <input type="button" id="plus" class="but plus" value="+" /><input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" />
+                    </div>
+                    <br />
+                    <div>
+                        <input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger" />
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
     }
     else
     {

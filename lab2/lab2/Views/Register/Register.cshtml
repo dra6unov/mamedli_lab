@@ -27,7 +27,7 @@
     <div class="form-group">
         <label for="email">Введите электронную почту</label>
         <input type="email" id="email" class="form-control" />
-        <label>@ViewBag.</label>
+        <label id="test"></label>
     </div>
     <div class="form-group">
         <label for="pass">Введите пароль</label>
@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
     $("#btnSubmit").click(function (e) {
-       // e.preventDefault();
+        e.preventDefault();
         $.ajax({
             method: "POST",
             url: "/Register/Register",
@@ -49,6 +49,7 @@
                 email: $("#email").val(),
                 pass: $("#pass").val(),
                 adress: $("#adress").val()
+            }
             }
         });
 

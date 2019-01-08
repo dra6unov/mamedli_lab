@@ -19,7 +19,7 @@ namespace lab2.Controllers
         public ActionResult Search(string searchItem)
         {
             WebStoreEntities db = new WebStoreEntities();
-            var dbItem = db.PRODUCTS.Where(x => x.PRODUCTNAME == searchItem).ToList();
+            var dbItem = db.PRODUCTS.Where(x => x.PRODUCTNAME.Contains(searchItem)).ToList();
             if (dbItem.Count > 0)
             {
                 return View(dbItem);
