@@ -20,20 +20,33 @@ namespace lab2.Controllers
         {
             WebStoreEntities db = new WebStoreEntities();
             USERS user = new USERS();
-            if(adress != "")
+            HttpContext.Response.Cookies["regSuccess"].Value = "";
+            var dbUser = db.USERS.Where(x=>x.EMAIL == email).ToList();
+            if(dbUser.Count > 0)
             {
-                user.ADRESS = adress;
+                if (adress != "")
+                {
+                    user.ADRESS = adress;
+                }
+                user.FIRSTNAME = firstName;
+                user.LASTNAME = lastName;
+                user.EMAIL = email;
+                user.PASS = pass;
+                user.GRUP = "user";
+                db.USERS.Add(user);
+                db.SaveChanges();
+
+                HttpContext.Response.Cookies["regSuccess"].Value = "";
+                //return View();
+                return RedirectToAction("Index", "Index");
             }
-            user.FIRSTNAME = firstName;
-            user.LASTNAME = lastName;
-            user.EMAIL = email;
-            user.PASS = pass;
-            user.GRUP = "user";
-            db.USERS.Add(user);
-            db.SaveChanges();
-            Console.WriteLine("42352346t");
-            //return View();
-            return RedirectToAction("Index","Index");
+            else
+            {
+                //string success = "Электронная почта уже занята";
+                HttpContext.Response.Cookies["regSuccess"].Value = "false";
+                return View();
+            }
+            
         }
 
         

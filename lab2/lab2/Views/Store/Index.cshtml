@@ -5,3 +5,40 @@
 
 <h2>Index</h2>
 
+<div class="container body-content">
+    @if (Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Наименование</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Стоимость</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row" id="name">@item.PRODUCTS.PRODUCTNAME</th>
+                    <td>@item.KOL</td>
+                    @{
+                        string price = (string)item.PRODUCTS.PRICE;
+                        int _price = price.AsInt();
+                        var stoim = _price * item.KOL;
+                    }
+                    <td>@stoim</td>
+                </tr>
+                 }
+                
+            </tbody>
+        </table>
+                        }
+                        else
+                        {
+                            <h3>Корзина пуста!</h3>
+                        }
+</div>

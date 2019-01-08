@@ -30,3 +30,7 @@ CREATE TABLE [dbo].[STORE] (
     FOREIGN KEY ([LOGIN_ID]) REFERENCES [dbo].[USERS] ([ID]),
     FOREIGN KEY ([PROD_ID]) REFERENCES [dbo].[PRODUCTS] ([ID])
 );
+
+
+
+git push https://github.com/dra6unov/mamedli_lab master

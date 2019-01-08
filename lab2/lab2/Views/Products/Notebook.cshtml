@@ -4,7 +4,9 @@
 }
 
 <div class="container body-content">
-    <h2>Notebook</h2>
+    <h2>Ноутбуки</h2>
+    @if (Model.Count > 0)
+    {
     <table class="table">
         <thead>
             <tr>
@@ -25,11 +27,16 @@
                     <td>@item.DESCR</td>
                     <td id="price">@item.PRICE</td>
                     <td><input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger" /></td>
-                    <td><input type="button" id="plus" class="but plus" value="+" />@*<label id="count" class="count">1</label>*@<input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" /></td>
+                    <td><input type="button" id="plus" class="but plus" value="+" /><input type="text" class="count" id="count" value="1"><input type="button" id="minus" class="but minus" value="-" /></td>
                 </tr>
             }
         </tbody>
     </table>
+    }
+    else
+    {
+        <h3>Еще нет товара в этой категории</h3>
+    }
 </div>
 
 <script type="text/javascript">

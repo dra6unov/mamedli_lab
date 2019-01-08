@@ -13,7 +13,13 @@ namespace lab2.Controllers
         public ActionResult Index()
         {
             WebStoreEntities db = new WebStoreEntities();
-            string mail = HttpContext.Request.Cookies["mail"].Value;
+            string mail = "";
+            //HttpContext.Response.Cookies["mail"].Value = "";
+            if(HttpContext.Request.Cookies.Count > 0)
+            if (HttpContext.Request.Cookies["mail"].Value != "")
+            {
+                mail = HttpContext.Request.Cookies["mail"].Value; 
+            }
             //var dbStore = new STORE();
 
             if (mail != "")
@@ -25,9 +31,6 @@ namespace lab2.Controllers
             {
                 return View();
             }
-            
-
-            
         }
 
         public void addToStore(string name, string price, int kol, string mail)

@@ -14,18 +14,20 @@ namespace lab2.Controllers
         //[HttpGet]
         public ActionResult Smartphone()
         {
-            return View();
+            var AllSmartphones = db.PRODUCTS.Where(x => x.CATEGORY == "mobile").ToList();
+            return View(AllSmartphones);
         }
 
         public ActionResult Notebook()
         {
-            var AllNotebooks = db.PRODUCTS.Where(x => x.CATEGORY == "Ноутбуки").ToList();
+            var AllNotebooks = db.PRODUCTS.Where(x => x.CATEGORY == "notebook").ToList();
             return View(AllNotebooks);
         }
 
         public ActionResult Smartwatch()
         {
-            return View();
+            var AllSmartwatchs = db.PRODUCTS.Where(x => x.CATEGORY == "smartwatch").ToList();
+            return View(AllSmartwatchs);
         }
 
         //[HttpPost]
