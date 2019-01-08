@@ -33,4 +33,4 @@ CREATE TABLE [dbo].[STORE] (
 
 
 
-git push https://github.com/dra6unov/mamedli_lab master
+
