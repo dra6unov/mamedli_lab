@@ -1,0 +1,17 @@
+﻿<div class="col-md-2">
+    <form id="authForm">
+        <div class="form-group">
+            <label for="email">Введите электронную почту</label>
+            <input type="email" id="emailAu" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="pass">Введите пароль</label>
+            <input type="password" id="passAu" class="form-control" />
+        </div>
+        <div>
+            <input type="button" class="btn btn-primary" value="Войти" id="auBut">
+            <a href="@Url.Action("Register","Register")"><input type="button" class="btn btn-primary reg-btn" value="Регистрация"></a>
+        </div>
+    </form>
+    <input type="button" class="btn btn-primary" value="Выйти" id="logoutBut">
+</div>

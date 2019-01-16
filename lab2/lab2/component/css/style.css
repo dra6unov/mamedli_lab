@@ -50,7 +50,37 @@
 }
 
 .prod{
-    margin-top: 40px;
-    margin-left: 50px;
+    margin-top: 30px;
+    margin-left: 40px;
     border: 1px solid lightgrey;
+}
+
+.suC{
+    display: none;
+}
+
+.addBtn{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nameCheck{
+    display:none;
+    color: red;
+}
+
+.proizvCheck {
+    display: none;
+    color: red;
+}
+
+.descCheck {
+    display: none;
+    color: red;
+}
+
+.priceCheck {
+    display: none;
+    color: red;
 }

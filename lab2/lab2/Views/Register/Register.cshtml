@@ -7,7 +7,7 @@
 <h2>Регистрация</h2>
 
 
-<form>
+<form >
     <div class="form-group">
         <label for="firstname">Имя</label>
         <input type="text" id="firstname" class="form-control" />
@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
     $("#btnSubmit").click(function (e) {
-        e.preventDefault();
+        //e.preventDefault();
         $.ajax({
             method: "POST",
             url: "/Register/Register",
@@ -50,7 +50,7 @@
                 pass: $("#pass").val(),
                 adress: $("#adress").val()
             }
-            }
+            //}
         });
 
     });

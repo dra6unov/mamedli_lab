@@ -14,6 +14,7 @@
                     <th scope="col">Наименование</th>
                     <th scope="col">Количество</th>
                     <th scope="col">Стоимость</th>
+                    <th scope="col">Действие</th>
                 </tr>
             </thead>
 
@@ -31,6 +32,7 @@
                         var stoim = _price * item.KOL;
                     }
                     <td>@stoim</td>
+                    <td><input type="button" value="Удалить" class="btn-outline-danger"/></td>
                 </tr>
                  }
                 
@@ -41,4 +43,5 @@
                         {
                             <h3>Корзина пуста!</h3>
                         }
+    <input type="button" value="Купить" class="btn-success"/>
 </div>

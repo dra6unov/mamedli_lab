@@ -4,6 +4,25 @@
 }
 
 <div class="container body-content">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                @*<div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>*@
+                <div class="modal-body">
+                    <lable>Товар добавлен в корзину!</lable>
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
     @if (Model.Count > 0)
     {
         <h2>Ноутбуки</h2>
@@ -33,7 +52,10 @@
                     </div>
                     <br />
                     <div>
-                        <input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger" />
+                        <input type="button" id="addStore" value="Добавить в корзинцу" class="btn btn-danger addBtn" />
+                    </div>
+                    <div id="buy" class="buy">
+                        <label>Товар добавлен в корзину!</label>
                     </div>
                 </div>
             }
@@ -46,9 +68,12 @@
 </div>
 
 <script type="text/javascript">
+    
+
+
     $(".but").click(function () {
         var $button = $(this);
-        var value = $("#count").val();
+        var value = $(".count").val();
         var newValue
         if ($button.val() == "+") {
             newValue = parseInt(value) + 1;
@@ -75,6 +100,12 @@
                 kol: $("#count").val(),
                 mail: document.cookie.replace("mail=", "")
             }
+            //success: function () {
+            //    setTimeout(function () {
+            //        $(".buy").show();
+            //    }, 3000);
+            //    $(".buy").hide();
+            //}
         });
     });
 </script>

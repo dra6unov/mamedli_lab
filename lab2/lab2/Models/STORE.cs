@@ -15,9 +15,9 @@ namespace lab2.Models
     public partial class STORE
     {
         public int ID { get; set; }
-        public int LOGIN_ID { get; set; }
-        public int PROD_ID { get; set; }
-        public int KOL { get; set; }
+        public Nullable<int> LOGIN_ID { get; set; }
+        public Nullable<int> PROD_ID { get; set; }
+        public Nullable<int> KOL { get; set; }
     
         public virtual PRODUCTS PRODUCTS { get; set; }
         public virtual USERS USERS { get; set; }

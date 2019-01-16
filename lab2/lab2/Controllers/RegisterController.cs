@@ -21,14 +21,14 @@ namespace lab2.Controllers
             WebStoreEntities db = new WebStoreEntities();
             USERS user = new USERS();
             HttpContext.Response.Cookies["regSuccess"].Value = "";
-            var dbUser = db.USERS.Where(x=>x.EMAIL == email).ToList();
-            if(dbUser.Count > 0)
+            //var dbUser = db.USERS.Where(x=>x.EMAIL == email).ToList();
+            //if(dbUser.Count > 0)
+            //{
+            if (adress != "")
             {
-                if (adress != "")
-                {
-                    user.ADRESS = adress;
-                }
-                user.FIRSTNAME = firstName;
+                user.ADRESS = adress;
+            }
+            user.FIRSTNAME = firstName;
                 user.LASTNAME = lastName;
                 user.EMAIL = email;
                 user.PASS = pass;
@@ -39,13 +39,13 @@ namespace lab2.Controllers
                 HttpContext.Response.Cookies["regSuccess"].Value = "";
                 //return View();
                 return RedirectToAction("Index", "Index");
-            }
-            else
-            {
+            //}
+           // else
+            //{
                 //string success = "Электронная почта уже занята";
-                HttpContext.Response.Cookies["regSuccess"].Value = "false";
-                return View();
-            }
+                //HttpContext.Response.Cookies["regSuccess"].Value = "false";
+                //return View();
+            //}
             
         }
 

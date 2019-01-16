@@ -52,6 +52,7 @@
                 <input type="button" class="btn btn-primary" value="Выйти" id="logoutBut">
             </div>
         </div>
+        
     </div>
 
     <div class="container body-content">
@@ -65,22 +66,17 @@
         var _mail = document.cookie.replace("mail=","");
 
         window.onload = function () {
+            $(".buy").hide();
             if (_mail == "") {
                 $("#authForm").show();
                 $("#logoutBut").hide();
 
-                @*document.getElementById('authForm').innerHTML = '<div class="form-group"><label for="email">Введите электронную почту</label> <input type="email" id="emailAu" class="form-control" /></div><div class="form-group"><label for="pass">Введите пароль</label><input type="password" id="passAu" class="form-control" /></div><div><input type="button" class="btn btn-primary" value="Войти" id="auBut"><a href="@Url.Action("Register","Register")"><input type="button" class="btn btn-primary reg-btn" value="Регистрация"></a></div>'*@
-                //alert(_mail);
             }
             else {
-                //document.getElementById('authForm').innerHTML = '<input type="button" class="btn btn-primary" value="Выйти" id="logoutBut">'
 
                 $("#authForm").hide();
                 $("#logoutBut").show();
-                
-                //alert(_mail);
             }
-            //alert(_mail);
         };
 
         $("#logoutBut").click(function () {
@@ -89,7 +85,11 @@
             //alert(_mail);
             $.ajax({
                 method: "POST",
-                url: "/Index/logout"
+                url: "/Index/logout",
+                success: function () {
+                    $("#authForm").show();
+                    $("#logoutBut").hide();
+                }
             });
         });
 
@@ -100,10 +100,18 @@
                 data: {
                     mail: $("#emailAu").val(),
                     pass: $("#passAu").val()
+                },
+                success: function () {
+                    $("#authForm").hide();
+                    $("#logoutBut").show();
+                    //alert("WOW");
                 }
             });
         });
 
+        $(".corz-pos").click(function () {
+
+        });
         //$("#search").click(function () {
         //    $.ajax({
         //        method: "GET",

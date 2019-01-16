@@ -5,35 +5,35 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PRODUCTNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PRODUCTNAME" Type="nvarchar" MaxLength="20" />
     <Property Name="MANUFACT" Type="nvarchar" MaxLength="30" />
-    <Property Name="PRICE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRICE" Type="nvarchar" MaxLength="10" />
     <Property Name="DESCR" Type="nvarchar" MaxLength="200" />
-    <Property Name="CATEGORY" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CATEGORY" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="STORE">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LOGIN_ID" Type="int" Nullable="false" />
-    <Property Name="PROD_ID" Type="int" Nullable="false" />
-    <Property Name="KOL" Type="int" Nullable="false" />
+    <Property Name="LOGIN_ID" Type="int" />
+    <Property Name="PROD_ID" Type="int" />
+    <Property Name="KOL" Type="int" />
   </EntityType>
   <EntityType Name="USERS">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="LASTNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="EMAIL" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="PASS" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="LASTNAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="40" />
+    <Property Name="PASS" Type="nvarchar" MaxLength="20" />
     <Property Name="GRUP" Type="nvarchar" MaxLength="15" />
     <Property Name="ADRESS" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__STORE__LOGIN_ID__4CA06362">
-    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+  <Association Name="FK__STORE__LOGIN_ID__0D7A0286">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
     <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USERS">
@@ -44,8 +44,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__STORE__PROD_ID__4D94879B">
-    <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+  <Association Name="FK__STORE__PROD_ID__0E6E26BF">
+    <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="0..1" />
     <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTS">
@@ -60,11 +60,11 @@
     <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__STORE__LOGIN_ID__4CA06362" Association="Self.FK__STORE__LOGIN_ID__4CA06362">
+    <AssociationSet Name="FK__STORE__LOGIN_ID__0D7A0286" Association="Self.FK__STORE__LOGIN_ID__0D7A0286">
       <End Role="USERS" EntitySet="USERS" />
       <End Role="STORE" EntitySet="STORE" />
     </AssociationSet>
-    <AssociationSet Name="FK__STORE__PROD_ID__4D94879B" Association="Self.FK__STORE__PROD_ID__4D94879B">
+    <AssociationSet Name="FK__STORE__PROD_ID__0E6E26BF" Association="Self.FK__STORE__PROD_ID__0E6E26BF">
       <End Role="PRODUCTS" EntitySet="PRODUCTS" />
       <End Role="STORE" EntitySet="STORE" />
     </AssociationSet>
